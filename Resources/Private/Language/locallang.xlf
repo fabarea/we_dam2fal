@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2013-08-08T14:09:14Z" product-name="we_dam2fal">
+		<header/>
+		<body>
+
+			<trans-unit id="tx_wedam2fal_domain_model_damfalfile">
+				<source>Damfalfile</source>
+			</trans-unit>
+			<trans-unit id="tx_wedam2fal_domain_model_damfalfile.title">
+				<source>title</source>
+			</trans-unit>
+			<trans-unit id="tx_wedam2fal_domain_model_damfalfile.progress">
+                <source>Progress</source>
+            </trans-unit>
+			
+			<trans-unit id="tx_wedam2fal_domain_model_damfalfile.updatereference">
+			    <source>Update references</source>
+            </trans-unit>
+			
+			<trans-unit id="tx_wedam2fal_domain_model_damfalfile.dataimport">
+			    <source>DAM2FAL Dataimport</source>
+            </trans-unit>
+			
+			<trans-unit id="tx_wedam2fal_domain_model_damfalfile.of">
+			    <source>of</source>
+            </trans-unit>
+			
+			<trans-unit id="tx_wedam2fal_domain_model_damfalfile.dataexported">
+			    <source>data imported to FAL</source>
+            </trans-unit>
+			
+			<trans-unit id="tx_wedam2fal_domain_model_damfalfile.categoryexported">
+			    <source>categories imported</source>
+            </trans-unit>
+			
+			<trans-unit id="tx_wedam2fal_domain_model_damfalfile.noextension">
+			    <source>No extension to convert to FAL structure</source>
+            </trans-unit>
+			
+			<trans-unit id="tx_wedam2fal_domain_model_damfalfile.tablename">
+			    <source>Tablename</source>
+            </trans-unit>
+			
+			<trans-unit id="tx_wedam2fal_domain_model_damfalfile.damidentifier">
+			    <source>DAM identifier</source>
+            </trans-unit>
+			
+			<trans-unit id="tx_wedam2fal_domain_model_damfalfile.falidentifier">
+			    <source>FAL identifier</source>
+            </trans-unit>
+			
+			<trans-unit id="tx_wedam2fal_domain_model_damfalfile.noerror">
+			    <source>No errors</source>
+            </trans-unit>
+			
+			<trans-unit id="tx_wedam2fal_domain_model_damfalfile.erroroccured">
+			    <source>The following errors occured for the references update in</source>
+            </trans-unit>
+			
+			<trans-unit id="tx_wedam2fal_domain_model_damfalfile.message">
+			    <source>Message</source>
+            </trans-unit>
+			
+			<trans-unit id="tx_wedam2fal_domain_model_damfalfile.identifier">
+			    <source>identifier</source>
+            </trans-unit>
+			
+			<trans-unit id="tx_wedam2fal_domain_model_damfalfile.uidlocal">
+			    <source>Uid Local</source>
+            </trans-unit>
+			
+			<trans-unit id="tx_wedam2fal_domain_model_damfalfile.uidforeign">
+			    <source>Uid Foreign</source>
+            </trans-unit>
+			
+			<trans-unit id="tx_wedam2fal_domain_model_damfalfile.logfiles">
+			    <source>Logfiles of the DAM-Dataimport for References</source>
+            </trans-unit>
+			
+			<trans-unit id="tx_wedam2fal_domain_model_damfalfile.changeable">
+			    <source>if you want to change it, do so</source>
+            </trans-unit>
+			
+			<trans-unit id="tx_wedam2fal_domain_model_damfalfile.warningpointone">
+			    <source>
+					Make a backup of your database
+				</source>
+            </trans-unit>
+			
+			<trans-unit id="tx_wedam2fal_domain_model_damfalfile.warningpointonehalf">
+			    <source>
+					If you want to import categories, make a backup of the following database tables: tx_dam_cat, tx_dam_mm_cat, sys_category, sys_category_record_mm
+				</source>
+            </trans-unit>
+			
+			<trans-unit id="tx_wedam2fal_domain_model_damfalfile.warningpointtwo">
+			    <source>
+					Install the extension “Media management (media)”
+				</source>
+            </trans-unit>
+			
+			<trans-unit id="tx_wedam2fal_domain_model_damfalfile.warningpointthree">
+			    <source>
+					Index all your files with a Scheduler Task (File Abstratcion Layer: Indexing Job)
+				</source>
+            </trans-unit>
+			
+			<trans-unit id="tx_wedam2fal_domain_model_damfalfile.warningpointfour">
+			    <source>
+					Import the DAM data information and relations with DAM2FAL
+				</source>
+            </trans-unit>
+			
+			<trans-unit id="tx_wedam2fal_domain_model_damfalfile.warningpointfive">
+			    <source>
+					Uninstall all DAM extensions (dam, dam_tt_content, ...)
+				</source>
+            </trans-unit>
+			
+			<trans-unit id="tx_wedam2fal_domain_model_damfalfile.warningpointsix">
+			    <source>
+					Rewrite your DAM related extensions to make them FAL ready
+				</source>
+            </trans-unit>
+			
+			<trans-unit id="tx_wedam2fal_domain_model_damfalfile.warningassumption">
+			    <source>
+					Assumption: sys_file_reference table has no entrys and the installation from TYPO3 4.x.y to 6.x.y is new
+				</source>
+            </trans-unit>
+			
+			<trans-unit id="tx_wedam2fal_domain_model_damfalfile.submitButton">
+			    <source>Submit</source>
+            </trans-unit>
+			
+			<trans-unit id="tx_wedam2fal_domain_model_damfalfile.falidentifiercheckbox">
+			    <source>No import for identifier</source>
+            </trans-unit>
+			
+			<trans-unit id="tx_wedam2fal_domain_model_damfalfile.nocategory">
+			    <source>There is no category available to import</source>
+            </trans-unit>
+			
+			<trans-unit id="tx_wedam2fal_domain_model_damfalfile.categoryimport">
+			    <source>DAM categoryimport</source>
+            </trans-unit>
+			
+			<trans-unit id="tx_wedam2fal_domain_model_damfalfile.damfilesimport">
+			    <source>DAM dataimport</source>
+            </trans-unit>
+			
+			<trans-unit id="tx_wedam2fal_domain_model_damfalfile.categoryreferencesexported">
+			    <source>category references imported</source>
+            </trans-unit>
+			
+			<trans-unit id="tx_wedam2fal_domain_model_damfalfile.updatettcontent">
+			    <source>tt_content tablecheck</source>
+            </trans-unit>
+			
+			<trans-unit id="tx_wedam2fal_domain_model_damfalfile.extreferenceselecttext">
+			    <source>You can import the following DAM extension references</source>
+            </trans-unit>
+
+            <trans-unit id="tx_wedam2fal_domain_model_damfalfile.headlineOptional">
+                <source>Optional: sys_file_reference to foreign table entry counter</source>
+            </trans-unit>
+
+            <trans-unit id="tx_wedam2fal_domain_model_damfalfile.updateReferenceLabelTablePartOne">
+                <source>table column in chosen foreign table to update</source>
+            </trans-unit>
+
+            <trans-unit id="tx_wedam2fal_domain_model_damfalfile.updateReferenceLabelTablePartTwo">
+                <source>with counted entries from sys_file_reference</source>
+            </trans-unit>
+
+            <trans-unit id="tx_wedam2fal_domain_model_damfalfile.updateReferenceLabelRelation">
+                <source>check if you don't want to update the column</source>
+            </trans-unit>
+
+            <trans-unit id="tx_wedam2fal_domain_model_damfalfile.noCategories">
+                <source>No categories available</source>
+            </trans-unit>
+
+            <trans-unit id="tx_wedam2fal_domain_model_damfalfile.damdata">
+                <source>DAM data</source>
+            </trans-unit>
+
+            <trans-unit id="tx_wedam2fal_domain_model_damfalfile.damrelations">
+                <source>DAM relations</source>
+            </trans-unit>
+
+            <trans-unit id="tx_wedam2fal_domain_model_damfalfile.tableproof">
+                <source>Update tables</source>
+            </trans-unit>
+
+            <trans-unit id="tx_wedam2fal_domain_model_damfalfile.damcategories">
+                <source>DAM categories</source>
+            </trans-unit>
+			
+			<trans-unit id="tx_wedam2fal_domain_model_damfalfile.importdatafirst">
+                <source>Please import all DAM data first</source>
+            </trans-unit>
+			
+			<trans-unit id="tx_wedam2fal_domain_model_damfalfile.updatettcontentthumbnail">
+                <source>tt_content thumbnail update</source>
+            </trans-unit>
+			
+			<trans-unit id="tx_wedam2fal_domain_model_damfalfile.updatettcontentrte">
+                <source>tt_content RTE filelink update</source>
+            </trans-unit>
+			
+			<trans-unit id="tx_wedam2fal_domain_model_damfalfile.updatettcontentthumbnailtooltip">
+                <source>Checks the tt_content table and update that table, so that the thumbnails of the pictures will be shown.</source>
+            </trans-unit>
+			
+			<trans-unit id="tx_wedam2fal_domain_model_damfalfile.updatettcontentrtetooltip">
+                <source>Checks the tt_content RTE texts for the old media-tag and replaces the media-tag with the new file-tag.</source>
+            </trans-unit>
+			
+			<trans-unit id="tx_wedam2fal_domain_model_damfalfile.tablenametooltip">
+                <source>The defined name of a table of the selected extension which should be FAL-ready then.</source>
+            </trans-unit>
+			
+			<trans-unit id="tx_wedam2fal_domain_model_damfalfile.falidentifiertooltip">
+                <source>This is the FAL identifer, which is defined in your TCA in your extension which should be FAL-ready then.</source>
+            </trans-unit>
+			
+			<trans-unit id="tx_wedam2fal_domain_model_damfalfile.warninglistheadline">
+                <source>Go through the following steps</source>
+            </trans-unit>
+			
+			<trans-unit id="tx_wedam2fal_domain_model_damfalfile.relationstotal">
+                <source>Total relations to import</source>
+            </trans-unit>
+			
+			</body>
+	</file>
+</xliff>

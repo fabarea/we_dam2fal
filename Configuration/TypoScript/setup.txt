@@ -1,0 +1,51 @@
+plugin.tx_wedam2fal {
+	view {
+		templateRootPath = {$plugin.tx_wedam2fal.view.templateRootPath}
+		partialRootPath = {$plugin.tx_wedam2fal.view.partialRootPath}
+		layoutRootPath = {$plugin.tx_wedam2fal.view.layoutRootPath}
+	}
+	persistence {
+		storagePid = {$plugin.tx_wedam2fal.persistence.storagePid}
+	}
+	features {
+		# uncomment the following line to enable the new Property Mapper.
+		# rewrittenPropertyMapper = 1
+	}
+}
+
+plugin.tx_wedam2fal._CSS_DEFAULT_STYLE (
+	textarea.f3-form-error {
+		background-color:#FF9F9F;
+		border: 1px #FF0000 solid;
+	}
+
+	input.f3-form-error {
+		background-color:#FF9F9F;
+		border: 1px #FF0000 solid;
+	}
+
+	.tx-we-dam2fal table {
+		border-collapse:separate;
+		border-spacing:10px;
+	}
+
+	.tx-we-dam2fal table th {
+		font-weight:bold;
+	}
+
+	.tx-we-dam2fal table td {
+		vertical-align:top;
+	}
+)
+
+ # Module configuration
+module.tx_wedam2fal {
+	persistence {
+		storagePid = {$module.tx_wedam2fal.persistence.storagePid}
+	}
+	view {
+		templateRootPath = {$module.tx_wedam2fal.view.templateRootPath}
+		partialRootPath = {$module.tx_wedam2fal.view.partialRootPath}
+		layoutRootPath = {$module.tx_wedam2fal.view.layoutRootPath}
+	}
+}

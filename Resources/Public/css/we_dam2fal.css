@@ -1,0 +1,82 @@
+.dam2falErrorTable .white{
+	background-color:#d2d0d0;
+}
+
+.dam2falErrorTable td , .dam2falErrorTable th{
+	padding-right:20px;
+}
+
+.grey {
+	background-color:#cfcece;
+}
+
+.successnotice, .errornotice{
+	background-color: #E1F7E1;
+	background-image: url('../img/ok.gif');
+	border: 1px solid #339900;
+	color: #339900;
+	background-position: 10px center;
+	background-repeat: no-repeat;
+	border: 1px solid #666;
+	box-sizing: border-box;
+	clear: both;
+	cursor: pointer;
+	margin: 3px 0;
+	padding: 7px 7px 7px 35px;
+	vertical-align: middle;
+	width: 100%;
+}
+
+input.error {
+	border:1px solid red;
+    background-color: #FFD9D9;
+    background-image: url('../img/error.gif');
+    background-repeat:no-repeat;
+    border-color: #CD0921;
+    color: #CD0921;
+    background-position: 10px center;
+   /* padding: 7px 7px 7px 35px;*/
+}
+
+.errornotice{
+	border:1px solid red;
+    background-color: #FFD9D9;
+    background-image: url('../img/error.gif');
+    background-repeat:no-repeat;
+    border-color: #CD0921;
+    color: #CD0921;
+    background-position: 10px center;
+}
+
+.tx-we-dam2fal input{
+    padding: 2px 2px 2px 2px;
+}
+
+label.hiding{
+	display:none;
+}
+
+label.error {
+  display: none !important;
+}
+
+.tx-we-dam2fal h1 {
+	text-align:left;
+}
+
+.tx-we-dam2fal h2 {
+	font-size:12px;
+}
+
+.tx-we-dam2fal ul, .tx-we-dam2fal ol{
+
+	list-style: disc;
+	list-style-type:decimal;
+	margin-left:17px;
+	
+}
+
+.tableTdPaddingRight td {
+	padding-right:30px;
+}
+

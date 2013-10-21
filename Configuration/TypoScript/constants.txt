@@ -1,0 +1,29 @@
+plugin.tx_wedam2fal {
+	view {
+		# cat=plugin.tx_wedam2fal/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:we_dam2fal/Resources/Private/Templates/
+		# cat=plugin.tx_wedam2fal/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:we_dam2fal/Resources/Private/Partials/
+		# cat=plugin.tx_wedam2fal/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:we_dam2fal/Resources/Private/Layouts/
+	}
+	persistence {
+		# cat=plugin.tx_wedam2fal//a; type=string; label=Default storage PID
+		storagePid =
+	}
+}
+
+module.tx_wedam2fal {
+	view {
+		# cat=module.tx_wedam2fal/file; type=string; label=Path to template root (BE)
+		templateRootPath = EXT:we_dam2fal/Resources/Private/Backend/Templates/
+		# cat=module.tx_wedam2fal/file; type=string; label=Path to template partials (BE)
+		partialRootPath = EXT:we_dam2fal/Resources/Private/Backend/Partials/
+		# cat=module.tx_wedam2fal/file; type=string; label=Path to template layouts (BE)
+		layoutRootPath = EXT:we_dam2fal/Resources/Private/Backend/Layouts/
+	}
+	persistence {
+		# cat=module.tx_wedam2fal//a; type=string; label=Default storage PID
+		storagePid =
+	}
+}

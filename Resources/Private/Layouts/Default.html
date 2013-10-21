@@ -1,0 +1,88 @@
+<f:be.container addCssFile="{f:uri.resource(path:'css/we_dam2fal.css')}" addJsFile="{f:uri.resource(path:'js/jquerybib.js')}" pageTitle="DAM2FAL Dataimport">
+<script type="text/javascript">
+  $.noConflict();
+</script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<script src="http://{pathSite}Resources/Public/js/jqueryuicustom.js"></script>
+<script type="text/javascript" src="http://{pathSite}Resources/Public/js/jquery.validate.min.js" ></script>
+<script type="text/javascript">
+<![CDATA[
+  jQuery(document).ready(function($) {
+
+	$('.checkboxTrigger').click(function() {
+		
+		var idName = $($(this)).attr("id");
+		
+		if ($(this).attr('checked') !== undefined) {
+			$(this).attr('checked', false);
+			// put in required class
+			$("."+idName).addClass( "required" );
+			//alert("checked");
+		} else {
+			$(this).attr('checked', true);
+			// remove required class
+			$("."+idName).removeClass( "required" );
+			$("."+idName).removeClass( "error" );
+			
+			// remove label
+			var nameOfInput = $("."+idName).attr("name");
+			jQuery("label[for='"+nameOfInput+"']").addClass('hiding');
+
+		}
+	});
+
+    $('#identifierForm').validate();
+    $('#tablenameFieldnameForm').validate();
+    $( "#tabs" ).tabs({
+      active: ]]>{tabInteger}<![CDATA[
+    });
+	$( document ).tooltip();
+
+  });
+]]>
+</script>
+    <div class="typo3-fullDoc">
+        <div id="typo3-docheader">
+            <div id="typo3-docheader-row1">
+                <div class="buttonsleft">
+                    <span style="color:#FFF"></span>
+                </div>
+                <div class="buttonsright">
+                </div>
+            </div>
+            <div id="typo3-docheader-row2">
+                <div class="docheader-row2-left">
+                    <f:translate key="tx_wedam2fal_domain_model_damfalfile.dataimport"/>
+                </div>
+                <div class="docheader-row2-right">
+                    <f:be.pagePath/>
+                    <f:be.pageInfo/>
+                </div>
+            </div>
+
+        </div>
+        <div id="typo3-docbody">
+            <div id="typo3-inner-docbody">
+
+					<div class="tx-we-dam2fal">
+                        <f:render partial="Properties" />
+                        <br/>
+                        <div id="tabs">
+                            <ul>
+                                <li><a href="#tabs-1"><f:translate key="tx_wedam2fal_domain_model_damfalfile.damdata"/></a></li>
+                                <li><a href="#tabs-2"><f:translate key="tx_wedam2fal_domain_model_damfalfile.damrelations"/></a></li>
+                                <li><a href="#tabs-3"><f:translate key="tx_wedam2fal_domain_model_damfalfile.tableproof"/></a></li>
+                                <li><a href="#tabs-4"><f:translate key="tx_wedam2fal_domain_model_damfalfile.damcategories"/></a></li>
+                            </ul>
+						    <f:render section="main" />
+                        </div>
+					</div>
+
+            </div>
+        </div>
+    </div>
+
+</f:be.container>
+
+					
+

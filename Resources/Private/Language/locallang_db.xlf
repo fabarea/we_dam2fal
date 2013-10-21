@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2013-08-08T14:09:15Z" product-name="we_dam2fal">
+		<header/>
+		<body>
+
+			<trans-unit id="tx_wedam2fal_domain_model_damfalfile">
+				<source>Damfalfile</source>
+			</trans-unit>
+			<trans-unit id="tx_wedam2fal_domain_model_damfalfile.title">
+				<source>Titleeeeeee</source>
+			</trans-unit>
+
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,245 @@
+<f:layout name="Default" />
+
+<f:section name="main">
+
+<div id="tabs-1">
+    <h2><u><f:translate key="tx_wedam2fal_domain_model_damfalfile.damfilesimport"/></u></h2>
+    <div id="damtofal_txdamimport">
+        <f:translate key="tx_wedam2fal_domain_model_damfalfile.progress"/>:<br/>
+        {txDamEntriesProgressArray.actualcount} <f:translate key="tx_wedam2fal_domain_model_damfalfile.of"/> {txDamEntriesProgressArray.overall} <f:translate key="tx_wedam2fal_domain_model_damfalfile.dataexported"/>.<br/>
+    </div>
+</div>
+
+<div id="tabs-2">
+	<table cellpadding="10" cellspacing="0" border="0" class="tableTdPaddingRight">
+		<tr>
+			<td>	
+				<h2><u><f:translate key="tx_wedam2fal_domain_model_damfalfile.updatereference"/></u></h2>
+				<f:if condition="{extensionNames}">
+					<f:then>
+						<f:translate key="tx_wedam2fal_domain_model_damfalfile.extreferenceselecttext"/>:<br/>
+						<f:form action="referenceUpdate" name="referenceupdateform" method="post">							
+							<f:form.select name="chosenExtension" options="{extensionNames}" optionValueField="name" optionLabelField="name" value="{chosenExtension}" /><br/>
+							<br/>
+                            <f:form.hidden name="tabInteger" value="1" />
+							<f:form.submit value="{f:translate(key: 'tx_wedam2fal_domain_model_damfalfile.submitButton')}" name="executeReferenceUpdateSubmit" />
+						</f:form>
+					</f:then>
+					<f:else>
+						<f:translate key="tx_wedam2fal_domain_model_damfalfile.noextension"/>.<br/><br/>
+					</f:else>
+				</f:if>
+		
+				<f:if condition="{damIdents}">
+				  <f:then>
+					<br/>
+					<f:form action="referenceUpdate" name="referenceupdateformidentifier" method="post" id="identifierForm">
+						<table cellpadding="0" cellspacing="0" border="0">
+							<tr>
+								<th><span title="{f:translate(key: 'tx_wedam2fal_domain_model_damfalfile.tablenametooltip')}"><f:translate key="tx_wedam2fal_domain_model_damfalfile.tablename"/> (<f:translate key="tx_wedam2fal_domain_model_damfalfile.changeable"/>)</span></th>
+								<th><f:translate key="tx_wedam2fal_domain_model_damfalfile.damidentifier"/></th>
+								<th><span title="{f:translate(key: 'tx_wedam2fal_domain_model_damfalfile.falidentifiertooltip')}"><f:translate key="tx_wedam2fal_domain_model_damfalfile.falidentifier"/></span></th>
+								<th><f:translate key="tx_wedam2fal_domain_model_damfalfile.falidentifiercheckbox"/></th>
+							</tr>
+								<f:for each="{damIdents}" as="extensionIdents" iteration="itemIterator">
+									<tr>
+									<f:for each="{extensionIdents}" as="extensionData" iteration="iteratorForData">	
+										
+										<f:if condition="{iteratorForData.index} == 0">
+											<f:then>
+												<td><f:form.textfield name="identifierArray[{itemIterator.index}][{iteratorForData.index}]" value="{extensionData}" size="40" maxlength="50" />
+													<f:form.hidden name="identifierArray[{itemIterator.index}][4]" value="{extensionData}" />
+												</td>
+											</f:then>
+										</f:if>
+										
+										<f:if condition="{iteratorForData.index} == 1">
+										  <f:then>
+											<td><f:form.textfield name="identifierArray[{itemIterator.index}][{iteratorForData.index}]" value="{extensionData}" size="40" maxlength="50" readonly="dis" class="grey" /></td>
+										  </f:then>
+										</f:if>
+										
+										<f:if condition="{iteratorForData.index} == 2">
+										  <f:then>
+
+											<f:if condition="{extensionData}">
+												<f:then>
+													<td><f:form.textfield name="identifierArray[{itemIterator.index}][2]" value="{extensionData}" size="40" maxlength="50" class="falident_{itemIterator.index} required" /></td><td><f:form.checkbox  id="falident_{itemIterator.index}" class="checkboxTrigger" name="identifierArray[{itemIterator.index}][3]" value="isChecked" checked="" /></td>
+												</f:then>
+												<f:else>
+													<td><f:form.textfield name="identifierArray[{itemIterator.index}][2]" value="" size="40" maxlength="50" class="falident_{itemIterator.index} required" /></td><td><f:form.checkbox id="falident_{itemIterator.index}" class="checkboxTrigger" name="identifierArray[{itemIterator.index}][3]" value="isChecked" checked="" /></td>
+												</f:else>
+											</f:if>
+
+										  </f:then>
+										</f:if>
+										
+									</f:for>
+									</tr>
+								</f:for>
+							<tr>
+								<td colspan="3"><f:translate key="tx_wedam2fal_domain_model_damfalfile.relationstotal"/>: {countedRelationsTotal}</td>
+							</tr>
+							<tr>
+								<td colspan="3">
+                                    <f:form.hidden name="tabInteger" value="1" />
+									<br/><f:form.submit value="{f:translate(key: 'tx_wedam2fal_domain_model_damfalfile.submitButton')}" name="executeReferenceUpdateIdentifierSubmit" />
+								</td>
+							</tr>
+						</table>
+					</f:form>
+							
+				  </f:then>
+				</f:if>
+				
+				<f:if condition="{errorMarker} == 2">
+					<f:then>
+						<f:if condition="{errors}">
+							<f:then>
+								<br/><br/>
+								<div class="errornotice">
+									<f:translate key="tx_wedam2fal_domain_model_damfalfile.erroroccured"/>:<br/><br/>
+									<table cellpadding="0" cellspacing="0" border="0" class="dam2falErrorTable">
+										<tr>
+											<th><f:translate key="tx_wedam2fal_domain_model_damfalfile.message"/></th>
+											<th><f:translate key="tx_wedam2fal_domain_model_damfalfile.tablename"/></th>
+											<th><f:translate key="tx_wedam2fal_domain_model_damfalfile.identifier"/></th>
+											<th><f:translate key="tx_wedam2fal_domain_model_damfalfile.uidlocal"/></th>
+											<th><f:translate key="tx_wedam2fal_domain_model_damfalfile.uidforeign"/></th>
+										</tr>
+									<f:for each="{errors}" as="errorData" iteration="iteratorError" >	
+										<f:if condition="{iteratorError.isEven}">
+											<f:then><tr></f:then>
+											<f:else><tr class="white"></f:else>
+										</f:if>
+											<td>{errorData.message}</td>
+											<td>{errorData.tablename}</td>
+											<td>{errorData.identifier}</td>
+											<td>{errorData.uid_local}</td>
+											<td>{errorData.uid_foreign}</td>
+										</tr>
+									</f:for>
+									</table>
+								</div>								
+							</f:then>
+						</f:if>
+					</f:then>
+				</f:if>
+				<f:if condition="{errorMarker} == 1">
+					<f:then>
+						<div class="successnotice"><f:translate key="tx_wedam2fal_domain_model_damfalfile.noerror"/>.</div>
+					</f:then>
+				</f:if>
+				<br/>
+				<f:if condition="{folderFilenamesLog}">
+					<f:then>
+						<br/>
+						<f:translate key="tx_wedam2fal_domain_model_damfalfile.logfiles"/>:<br/>
+						<f:for each="{folderFilenamesLog}" as="filenames" iteration="iteratorFilenames" >
+							<f:link.external uri="{pathSite}Logs/{filenames}">
+								{filenames}<br/>
+							</f:link.external>
+						</f:for>
+						<br/>
+					</f:then>
+				</f:if>
+			</td>
+		</tr>
+	</table>
+</div>
+
+<div id="tabs-3">
+    <h2><u><f:translate key="tx_wedam2fal_domain_model_damfalfile.updatettcontent"/></u></h2>
+    <f:form action="referenceUpdate" name="ttcontentupdateform" method="post">
+
+        <span title="{f:translate(key: 'tx_wedam2fal_domain_model_damfalfile.updatettcontentthumbnailtooltip')}"><f:form.checkbox name="thumbnailTest" value="thumbnailTest" /> <f:translate key="tx_wedam2fal_domain_model_damfalfile.updatettcontentthumbnail" /></span><br/>
+        <span title="{f:translate(key: 'tx_wedam2fal_domain_model_damfalfile.updatettcontentrtetooltip')}"><f:form.checkbox name="rteFilelinkTest" value="rteFilelinkTest" /> <f:translate key="tx_wedam2fal_domain_model_damfalfile.updatettcontentrte" /></span><br/>
+        <br/>
+        <f:form.hidden name="tabInteger" value="2" />
+        <f:form.submit value="{f:translate(key: 'tx_wedam2fal_domain_model_damfalfile.submitButton')}" name="executeTTContentTestSubmit" />
+    </f:form>
+    <br/><br/><br/>
+    <h2><u><f:translate key="tx_wedam2fal_domain_model_damfalfile.headlineOptional"/></u></h2>
+    <f:if condition="{tablenamesForMultiselect}">
+        <f:then>
+            <f:form action="referenceUpdate" name="tablenamemultiselect" method="post">
+                <f:form.select name="chosenTablenames" options="{tablenamesForMultiselect}" value="{chosenTablenames}" /><br/>
+                <br/>
+                <f:form.hidden name="tabInteger" value="2" />
+                <f:form.submit value="{f:translate(key: 'tx_wedam2fal_domain_model_damfalfile.submitButton')}" name="executeTablenameMultiselect" />
+            </f:form>
+        </f:then>
+    </f:if>
+
+    <f:if condition="{fieldnamesFromTablenames}">
+        <f:then>
+            <br/>
+            <f:form action="referenceUpdate" name="tablenamefieldname" id="tablenameFieldnameForm" method="post">
+                <table cellpadding="0" cellspacing="0" border="0" class="tableTdPaddingRight">
+                    <tr>
+                        <th>Fieldname in sys_file_reference</th>
+                        <th><f:translate key="tx_wedam2fal_domain_model_damfalfile.updateReferenceLabelTablePartOne"/><br/><f:translate key="tx_wedam2fal_domain_model_damfalfile.updateReferenceLabelTablePartTwo"/></th>
+                        <th><f:translate key="tx_wedam2fal_domain_model_damfalfile.updateReferenceLabelRelation"/></th>
+                    </tr>
+                    <f:for each="{fieldnamesFromTablenames}" as="fieldnameTablename" iteration="iteratorForDataFieldnameTablename">
+                        <tr>
+                            <td><f:form.textfield name="fieldnameToTablenameArray[{iteratorForDataFieldnameTablename.index}][0]" value="{fieldnameTablename.fieldname}" size="50" maxlength="50" readonly="dis" class="grey" /></td>
+                            <td><f:form.textfield name="fieldnameToTablenameArray[{iteratorForDataFieldnameTablename.index}][1]" value="{fieldnameTablename.fieldname}" size="50" maxlength="50" class="tablenameForeign_{iteratorForDataFieldnameTablename.index} required" /></td>
+                            <td><f:form.checkbox id="tablenameForeign_{iteratorForDataFieldnameTablename.index}" class="checkboxTrigger" name="fieldnameToTablenameArray[{iteratorForDataFieldnameTablename.index}][2]" value="isChecked" checked="" /></td>
+                        </tr>
+                    </f:for>
+                    <tr>
+                        <td colspan="3">
+                            <f:form.hidden name="tabInteger" value="2" />
+                            <br/><f:form.submit value="{f:translate(key: 'tx_wedam2fal_domain_model_damfalfile.submitButton')}" name="executeTablenameFieldname" />
+                        </td>
+                    </tr>
+                </table>
+            </f:form>
+        </f:then>
+    </f:if>
+</div>
+
+<div id="tabs-4">
+	<f:if condition="{categoryProgressArray}">
+		<f:then>
+            <h2><u><f:translate key="tx_wedam2fal_domain_model_damfalfile.categoryimport"/></u></h2>
+			<f:translate key="tx_wedam2fal_domain_model_damfalfile.progress"/>:<br/>
+			{categoryProgressArray.actualcount} <f:translate key="tx_wedam2fal_domain_model_damfalfile.of"/> {categoryProgressArray.overall} <f:translate key="tx_wedam2fal_domain_model_damfalfile.categoryexported"/>.<br/>
+			{categoryReferenceProgressArray.actualcount} <f:translate key="tx_wedam2fal_domain_model_damfalfile.of"/> {categoryReferenceProgressArray.overall} <f:translate key="tx_wedam2fal_domain_model_damfalfile.categoryreferencesexported"/>.<br/>
+			
+			<f:if condition="{categoryProgressArray.actualcount} != {categoryProgressArray.overall}">
+				<f:then>
+					<f:form action="updateCategory" name="updatecategoryform" method="post">
+                        <f:form.hidden name="tabInteger" value="3" />
+						<br/><f:form.submit value="{f:translate(key: 'tx_wedam2fal_domain_model_damfalfile.submitButton')}" name="executeCategoryUpdateSubmit" />
+					</f:form>
+				</f:then>
+				<f:else>
+					
+					<f:if condition="{categoryReferenceProgressArray.actualcount} != {categoryReferenceProgressArray.overall}">
+						<f:then>
+							<f:form action="updateCategory" name="updatecategoryform" method="post">
+                                <f:form.hidden name="tabInteger" value="3" />
+								<br/><f:form.submit value="{f:translate(key: 'tx_wedam2fal_domain_model_damfalfile.submitButton')}" name="executeCategoryUpdateSubmit" />
+							</f:form>
+						</f:then>
+					</f:if>
+					
+				</f:else>
+			</f:if>
+		</f:then>
+        <f:else>
+            <f:translate key="tx_wedam2fal_domain_model_damfalfile.noCategories"/>.
+        </f:else>
+	</f:if>
+</div>
+
+</f:section>
+
+
+
+
+
+
+

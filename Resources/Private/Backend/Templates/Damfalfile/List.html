@@ -1,0 +1,18 @@
+<f:layout name="Default" />
+<f:section name="main">
+    <div id="tabs-1">
+        <h2><u><f:translate key="tx_wedam2fal_domain_model_damfalfile.damfilesimport"/></u></h2>
+        <div id="damtofal_txdamimport">
+            <f:translate key="tx_wedam2fal_domain_model_damfalfile.progress"/>:<br/>
+
+            {txDamEntriesProgressArray.actualcount} <f:translate key="tx_wedam2fal_domain_model_damfalfile.of"/> {txDamEntriesProgressArray.overall} <f:translate key="tx_wedam2fal_domain_model_damfalfile.dataexported"/>.<br/>
+            <f:form action="list" name="damentryform">
+                <f:form.submit value="{f:translate(key: 'tx_wedam2fal_domain_model_damfalfile.submitButton')}" name="executeDamUpdateSubmit" />
+            </f:form>
+
+        </div>
+    </div>
+	<div id="tabs-2"><f:translate key="tx_wedam2fal_domain_model_damfalfile.importdatafirst"/>.</div>
+	<div id="tabs-3"><f:translate key="tx_wedam2fal_domain_model_damfalfile.importdatafirst"/>.</div>
+	<div id="tabs-4"><f:translate key="tx_wedam2fal_domain_model_damfalfile.importdatafirst"/>.</div>
+</f:section>

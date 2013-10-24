@@ -198,7 +198,6 @@ class DamfalfileRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 			$alternative = $row['altText'];
 			$link = $row['image_link'];
 
-			$fieldsValuesForFALValues = array();
 			$fieldsValuesForFALValues = array(
 				'title' => $title,
 				'description' => $description,
@@ -245,7 +244,6 @@ class DamfalfileRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 			$link = '';
 		}
 
-		$fieldsValuesForFALValues = array();
 		$fieldsValuesForFALValues = array(
 			'fieldname' => $fieldname,
 			'deleted' => '0',
@@ -367,7 +365,8 @@ class DamfalfileRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 		// check if there is fileadmin in the path and create identifier
 		$filepath = $rowDamInfo['file_path'];
 		$filename = $rowDamInfo['file_name'];
-		if (substr($filepath, 0, 9) == 'fileadmin') {
+
+		if (substr(ltrim($filepath, '/'), 0, 9) == 'fileadmin') {
 			$FALIdentifier = $this->getIdentifier($filepath, $filename);
 			$storage = 1;
 		} else {
@@ -381,7 +380,7 @@ class DamfalfileRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 			$rowDamInfoParent = $this->selectOneRowQuery('*', 'tx_dam', "uid = '" . $rowDamInfo['l18n_parent'] . "'");
 			$FALIdentifier = $this->getIdentifier($rowDamInfoParent['file_path'], $rowDamInfoParent['file_name']);
 
-			if (substr($rowDamInfoParent['file_path'], 0, 9) == 'fileadmin') {
+			if (substr(ltrim($rowDamInfoParent['file_path'],'/'), 0, 9) == 'fileadmin') {
 				$storage = 1;
 			} else {
 				$storage = 0;
@@ -394,7 +393,6 @@ class DamfalfileRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 			$parentFALUid = 0;
 		}
 
-		$fieldsValuesForFALValues = array();
 		$fieldsValuesForFALValues = array(
 			'storage' => $storage,
 			'identifier' => $FALIdentifier,
@@ -405,10 +403,6 @@ class DamfalfileRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 			'description' => $rowDamInfo['description'],
 			'alternative' => $rowDamInfo['alt_text'],
 			'caption' => $rowDamInfo['caption'],
-			'sorting' => $rowDamInfo['sorting'],
-			'hidden' => $rowDamInfo['hidden'],
-			'starttime' => $rowDamInfo['starttime'],
-			'endtime' => $rowDamInfo['endtime'],
 			'fe_groups' => $rowDamInfo['fe_group'],
 			'sys_language_uid' => $rowDamInfo['sys_language_uid'],
 			't3_origuid' => $parentFALUid,
@@ -423,7 +417,6 @@ class DamfalfileRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 			'latitude' => '',
 			'longitude' => '',
 			'categories' => $rowDamInfo['category'],
-			'be_groups' => '',
 			'width' => $rowDamInfo['hpixels'],
 			'height' => $rowDamInfo['vpixels'],
 			'unit' => $rowDamInfo['height_unit'],
@@ -459,7 +452,7 @@ class DamfalfileRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	}
 
 	public function getIdentifier($filepath, $filename) {
-		$filepathWithoutFileadmin = str_replace('fileadmin', '', $filepath);
+		$filepathWithoutFileadmin = str_replace('fileadmin/', '', $filepath);
 		$completeIdentifierForFAL = $filepathWithoutFileadmin . $filename;
 		return $completeIdentifierForFAL;
 	}
@@ -486,7 +479,6 @@ class DamfalfileRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
         );
 		$rowDamInfoParent = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($damInfoParent);
 
-		$fieldsValuesForFALValues = array();
 		$fieldsValuesForFALValues = array(
 			'color_space' => $rowDamInfo['color_space'],
 			'deleted' => $rowDamInfo['deleted'],
@@ -495,10 +487,6 @@ class DamfalfileRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 			'description' => $rowDamInfo['description'],
 			'alternative' => $rowDamInfo['alt_text'],
 			'caption' => $rowDamInfo['caption'],
-			'sorting' => $rowDamInfo['sorting'],
-			'hidden' => $rowDamInfo['hidden'],
-			'starttime' => $rowDamInfo['starttime'],
-			'endtime' => $rowDamInfo['endtime'],
 			'fe_groups' => $rowDamInfo['fe_group'],
 			'sys_language_uid' => $rowDamInfo['sys_language_uid'],
 			't3_origuid' => '',
@@ -512,7 +500,6 @@ class DamfalfileRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 			'latitude' => '',
 			'longitude' => '',
 			'categories' => $rowDamInfo['category'],
-			'be_groups' => '',
 			'width' => $rowDamInfoParent['hpixels'],
 			'height' => $rowDamInfoParent['vpixels'],
 			'unit' => $rowDamInfoParent['height_unit'],
@@ -560,7 +547,6 @@ class DamfalfileRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
         );
 		$rowDamInfo = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($damInfo);
 
-		$fieldsValuesForFALValues = array();
 		$fieldsValuesForFALValues = array(
 			'color_space' => $rowDamInfo['color_space'],
 			'deleted' => $rowDamInfo['deleted'],
@@ -569,10 +555,6 @@ class DamfalfileRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 			'description' => $rowDamInfo['description'],
 			'alternative' => $rowDamInfo['alt_text'],
 			'caption' => $rowDamInfo['caption'],
-			'sorting' => $rowDamInfo['sorting'],
-			'hidden' => $rowDamInfo['hidden'],
-			'starttime' => $rowDamInfo['starttime'],
-			'endtime' => $rowDamInfo['endtime'],
 			'fe_groups' => $rowDamInfo['fe_group'],
 			'sys_language_uid' => $rowDamInfo['sys_language_uid'],
 			't3_origuid' => '',
@@ -586,7 +568,6 @@ class DamfalfileRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 			'latitude' => '',
 			'longitude' => '',
 			'categories' => $rowDamInfo['category'],
-			'be_groups' => '',
 			'width' => $rowDamInfo['hpixels'],
 			'height' => $rowDamInfo['vpixels'],
 			'unit' => $rowDamInfo['height_unit'],
@@ -722,7 +703,7 @@ class DamfalfileRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 			$countVar = 'uid';
 		}
 
-        $getProgressArray['overall'] = $this->countTableEntries($countVar, $table, '', $groupBy = '',$orderBy = '', $limit = '');
+        $getProgressArray['overall'] = $this->countTableEntries($countVar, $table, 'deleted = 0', $groupBy = '',$orderBy = '', $limit = '');
 
         $getProgressArray['actualcount'] = $this->countTableEntries($countVar, $table, $whereProgress, $groupBy = '', $orderBy = '', $limit = '');
 

@@ -73,7 +73,7 @@ class DamfalfileController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
         // action for updating inserting the DAM-entrys from tx_dam
 
         // checks if there are files to import and get them; if there are no files redirect to referenceUpdateAction
-		$txDamEntriesNotImported = $this->damfalfileRepository->getArrayDataFromTable('uid, file_path, file_name, sys_language_uid, l18n_parent', 'tx_dam', 'damalreadyexported <> 1', $groupBy = '', $orderBy = '', $limit = '10000');
+		$txDamEntriesNotImported = $this->damfalfileRepository->getArrayDataFromTable('uid, file_path, file_name, sys_language_uid, l18n_parent', 'tx_dam', 'damalreadyexported <> 1 and deleted = 0', $groupBy = '', $orderBy = '', $limit = '10000');
 
 		if ($txDamEntriesNotImported) {
             // if button was pressed start the tx_dam transfer
@@ -121,11 +121,9 @@ class DamfalfileController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
                 }
 				$this->redirect('list', NULL, NULL, NULL, NULL);
             }
-
         } else {
             $this->redirect('referenceUpdate', NULL, NULL, NULL, NULL);
         }
-
 		// get data for progress information
         $txDamEntriesProgressArray = $this->damfalfileRepository->getProgressArray('tx_dam', "damalreadyexported = '1'", '');
         $this->view->assign('txDamEntriesProgressArray', $txDamEntriesProgressArray);

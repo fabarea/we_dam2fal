@@ -119,6 +119,8 @@ class DamfalfileController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
 						}
 					}
                 }
+	            // Handle frontend group permission
+				$this->damfalfileRepository->migrateFrontendGroupPermissions();
 				$this->redirect('list', NULL, NULL, NULL, NULL);
             }
         } else {

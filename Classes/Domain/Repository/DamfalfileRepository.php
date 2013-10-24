@@ -47,6 +47,34 @@ class DamfalfileRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
         return $number;
     }
 
+	/**
+	 * Migrate Frontend Groups permissions.
+	 *
+	 * @return void
+	 */
+	public function migrateFrontendGroupPermissions() {
+		// populate fe_groups permission
+		$damEntries = $this->getArrayDataFromTable('uid, falUid, fe_group', 'tx_dam', 'deleted = 0 and fe_group != "0" and fe_group != ""');
+
+		foreach ($damEntries as $entry) {
+			$groups = explode(',', $entry['fe_group']);
+
+			// First delete all references.
+			$GLOBALS['TYPO3_DB']->sql_query('DELETE FROM sys_file_fegroups_mm WHERE uid_local = ' . $entry['falUid']);
+			foreach ($groups as $group) {
+
+				$GLOBALS['TYPO3_DB']->exec_INSERTquery(
+					'sys_file_fegroups_mm',
+					array(
+						'uid_local' => $entry['falUid'],
+						'uid_foreign' => $group,
+					),
+					$no_quote_fields = FALSE
+				);
+			}
+		}
+	}
+
 	public function updateTableEntry($table, $where, $fieldarray) {
 		$GLOBALS['TYPO3_DB']->exec_UPDATEquery (
 			$table,

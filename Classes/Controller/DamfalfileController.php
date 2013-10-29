@@ -83,8 +83,13 @@ class DamfalfileController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
                     // get subpart from tx_dam.file_path to compare later on with sys_file.identifier; complete it to FAL identifier
 					$completeIdentifierForFAL = $this->damfalfileRepository->getIdentifier($rowDamEntriesNotImported['file_path'],$rowDamEntriesNotImported['file_name']);
 
+					// Make sure the imported file exists
+					if (!file_exists(PATH_site . 'fileadmin' . $completeIdentifierForFAL)) {
+						continue;
+					}
+
 					// compare DAM with FAL entries in db in a foreach loop where tx_dam.file_path == sys_file.identifier and tx_dam.file_name == sys_file.name and sys_language_uid == sys_language_uid
-					$foundFALEntry = $this->damfalfileRepository->selectOneRowQuery('uid', 'sys_file', "identifier = '" . $completeIdentifierForFAL . "' and name = '" . $rowDamEntriesNotImported["file_name"] . "' and sys_language_uid = '" . $rowDamEntriesNotImported['sys_language_uid'] . "'", $groupBy = '', $orderBy = '', $limit = '10000');
+					$foundFALEntry = $this->damfalfileRepository->selectOneRowQuery('uid', 'sys_file', "identifier = '" . $this->sanitizeName($completeIdentifierForFAL) . "' and name = '" . $this->sanitizeName($rowDamEntriesNotImported["file_name"]) . "' and sys_language_uid = '" . $rowDamEntriesNotImported['sys_language_uid'] . "'", $groupBy = '', $orderBy = '', $limit = '10000');
 
 					// if a FAL entry is found compare information and update it if necessary
 					if ($foundFALEntry["uid"] > 0) {
@@ -104,7 +109,7 @@ class DamfalfileController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
 							$completeIdentifierForFALWithParentID = $this->damfalfileRepository->getIdentifier($damParentFileInfo['filepath'],$damParentFileInfo['filename']);
 
 							// compare DAM with FAL entries
-							$foundFALEntryWithParentID = $this->damfalfileRepository->selectOneRowQuery('uid', 'sys_file', "identifier = '" . $completeIdentifierForFALWithParentID . "' and name = '" . $damParentFileInfo['filename'] . "' and sys_language_uid = '" . $rowDamEntriesNotImported['sys_language_uid'] . "'", $groupBy = '', $orderBy = '', $limit = '10000');
+							$foundFALEntryWithParentID = $this->damfalfileRepository->selectOneRowQuery('uid', 'sys_file', "identifier = '" . addslashes($completeIdentifierForFALWithParentID) . "' and name = '" . addslashes($damParentFileInfo['filename']) . "' and sys_language_uid = '" . $rowDamEntriesNotImported['sys_language_uid'] . "'", $groupBy = '', $orderBy = '', $limit = '10000');
 
 							// if a FAL entry is found compare information and update it if necessary
 							if ($foundFALEntryWithParentID['uid'] > 0) {
@@ -129,6 +134,14 @@ class DamfalfileController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
 		// get data for progress information
         $txDamEntriesProgressArray = $this->damfalfileRepository->getProgressArray('tx_dam', "damalreadyexported = '1'", '');
         $this->view->assign('txDamEntriesProgressArray', $txDamEntriesProgressArray);
+	}
+
+	/**
+	 * @param string $name
+	 * @return string
+	 */
+	public function sanitizeName($name) {
+		return addslashes(stripslashes($name));
 	}
 
     /**

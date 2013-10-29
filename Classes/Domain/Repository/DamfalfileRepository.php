@@ -482,7 +482,7 @@ class DamfalfileRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	public function getIdentifier($filepath, $filename) {
 		$filepathWithoutFileadmin = str_replace('fileadmin/', '', $filepath);
 		$completeIdentifierForFAL = $filepathWithoutFileadmin . $filename;
-		return $completeIdentifierForFAL;
+		return '/' . ltrim($completeIdentifierForFAL, '/');
 	}
 
 	public function updateFALEntryWithParent($falUid, $damUid, $damUidParent) {

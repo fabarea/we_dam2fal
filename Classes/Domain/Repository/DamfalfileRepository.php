@@ -446,8 +446,6 @@ class DamfalfileRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 			'latitude' => '',
 			'longitude' => '',
 			'categories' => $rowDamInfo['category'],
-			'width' => $rowDamInfo['hpixels'],
-			'height' => $rowDamInfo['vpixels'],
 			'unit' => $rowDamInfo['height_unit'],
 			'damUid' => $damUid
 		);
@@ -530,8 +528,6 @@ class DamfalfileRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 			'latitude' => '',
 			'longitude' => '',
 			'categories' => $rowDamInfo['category'],
-			'width' => $rowDamInfoParent['hpixels'],
-			'height' => $rowDamInfoParent['vpixels'],
 			'unit' => $rowDamInfoParent['height_unit'],
 			'damUid' => $damUid
 		);
@@ -599,8 +595,6 @@ class DamfalfileRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 			'latitude' => '',
 			'longitude' => '',
 			'categories' => $rowDamInfo['category'],
-			'width' => $rowDamInfo['hpixels'],
-			'height' => $rowDamInfo['vpixels'],
 			'unit' => $rowDamInfo['height_unit'],
 			'damUid' => $damUid
 		);

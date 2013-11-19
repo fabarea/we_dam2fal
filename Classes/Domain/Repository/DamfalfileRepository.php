@@ -606,12 +606,24 @@ class DamfalfileRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 		);
 
 		// update fal entry
-		$GLOBALS['TYPO3_DB']->exec_UPDATEquery (
+		$result = $GLOBALS['TYPO3_DB']->exec_UPDATEquery (
 			'sys_file',
 			"uid = '" . $falUid . "'",
 			$fieldsValuesForFALValues,
 			$no_quote_fields = FALSE
 		);
+
+		// Output query debug if failure.
+		if (!$result) {
+			$query = $GLOBALS['TYPO3_DB']->UPDATEquery (
+				'sys_file',
+				"uid = '" . $falUid . "'",
+				$fieldsValuesForFALValues,
+				$no_quote_fields = FALSE
+			);
+
+			throw new \Exception('Could not execute query: ' . $query, 1384858112);
+		}
 
 		$this->updateDAMTableWithFALId($damUid, $falUid);
 
